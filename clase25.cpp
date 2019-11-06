@@ -1,22 +1,43 @@
 #include <iostream>
 #include <cmath>
 
-int N;
+int N=0;
 float Matriz[0][0];
 
+void relleno(int N,float **Matriz);
+
+void imprimecabezas(int N,float **Matriz);
+
+void imprime(int N,float **Matriz);
 
 
-float relleno(){
+void relleno(int N,float **Matriz){
     for (int i=0; i<N+2; i++){
         for (int j=0; j<N; j++){
-            std::cout<< "Posicion [ " << i+j << " ] [ " << i+j << " ]" << std::endl;
+            
         
             Matriz[i][j]=i+j;
+            std::cout<< Matriz[i][j]<< std::endl;
             
     }  
 }
       
 }
+
+void imprimecabezas(int N, float **Matriz){
+
+    float sum=0;
+
+    for (int i =0; i <N;i++) {
+
+    std::cout<<Matriz[i][0]<<" ";
+
+    sum+=Matriz[i][0];
+
+
+    }
+}
+
 
 
 int main(void){
@@ -25,8 +46,12 @@ int main(void){
     std::cin>>N;
     
     if (N>3 && N<11){
-       std::cout<<"Esta en el rango indicado"<<std::endl;
-       std::cout<<relleno()<<std::endl;
+       new float *[N];
+       for (int i=0; i<N; i++){
+           Matriz[i] = new float[N+2];
+       }
+       std::cout<<relleno(N, Matriz)<<std::endl;
+       std::cout<<imprimecabezas(N,Matriz)<<std::cout;
     
     }
     
@@ -34,11 +59,12 @@ int main(void){
        std::cout<<"No esta en el rango indicado"<<std::endl;  
     
     }
-    int Matriz[N+2][N];
+    
    
     return 0;
     
     
 }
+
 
 
